@@ -25,7 +25,7 @@ export const checkFormData = (formData) => {
 export const sendEmail = async (formData) => {
     try{
         const result = await axios.post(`${API_ENDPOINT}api/email`,formData);
-        return result?.data
+        return result?.data?.messageId
     }
     catch(e){
         console.log("Error in sending email",e.message)
