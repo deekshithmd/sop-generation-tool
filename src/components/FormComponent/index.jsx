@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Warning from "../../assets/warning.png";
-import { validateEmail, checkFormData } from "../../helpers";
+import { validateEmail, checkFormData, sendEmail } from "../../helpers";
 
 export const FormComponent = () => {
     const [formData, setFormData] = useState({
@@ -20,17 +20,24 @@ export const FormComponent = () => {
         reading: { value: "", isFocussed: false },
         speaking: { value: "", isFocussed: false },
         writing: { value: "", isFocussed: false },
-        firsttution: { value: "", isFocussed: false },
+        firsttution: { value: "no", isFocussed: false },
         tutionfees: { value: "", isFocussed: false },
-        gic: { value: "", isFocussed: false },
+        gic: { value: "no", isFocussed: false },
         gicpay: { value: "", isFocussed: false },
     });
     const topRef = useRef(null)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (checkFormData(formData)) {
-            console.log("send")
+            const result = await sendEmail(formData)
+            if (result) {
+                window.scrollTo({
+                    top: topRef,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            }
         }
         else {
             window.scrollTo({
@@ -571,7 +578,7 @@ export const FormComponent = () => {
                             Yes
                         </span>
                         <span>
-                            <input type="radio" name="firsttution" width="10px" value="no" />{" "}
+                            <input type="radio" name="firsttution" width="10px" value="no" defaultChecked/>{" "}
                             No
                         </span>
                     </RadioButtonContainer>
@@ -618,7 +625,7 @@ export const FormComponent = () => {
                             <input type="radio" name="gic" width="10px" value="yes" /> Yes
                         </span>
                         <span>
-                            <input type="radio" name="gic" width="10px" value="no" /> No
+                            <input type="radio" name="gic" width="10px" value="no" defaultChecked/> No
                         </span>
                     </RadioButtonContainer>
                 </InputContainer>
