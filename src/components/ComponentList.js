@@ -101,7 +101,7 @@ export const Input = styled.input`
 `;
 
 export const InputWrapper = styled.div`
-  width: ${props=>props.width ||'fit-content'};
+  width: ${props => props.width || 'fit-content'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,14 +170,40 @@ export const RadioButtonContainer = styled.div`
   }
 `;
 
-export const Dropdown = styled.select`
-  padding: 10px;
-  border: 1px solid #918d8d;
+export const Dropdown = styled.div`
+  padding: 10px 15px;
+  border: 1px solid #dadce0;
   border-radius: 5px;
-  width: 150px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: transparent;
+  width: 180px;
   outline: none;
+  position:relative;
+  cursor:pointer;
 `;
+
+export const OptionContainer=styled.div`
+  width:150px;
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  position:absolute;
+  top:42px;
+  left:0px;
+  background:#fff;
+  box-shadow: 2px 2px 6px #afb1b3;
+  border-radius:5px;
+`
 
 export const Option = styled.option`
   padding: 10px;
+  width:100%;
+  &:hover{
+    cursor:pointer;
+    background:#edeff0;
+  }
 `;

@@ -19,3 +19,39 @@ export const initialFormState = {
     gic: { value: "no", isFocussed: false },
     gicpay: { value: "", isFocussed: false },
 }
+
+export const qualificationList = [
+    {
+        id: '1',
+        name: 'Grade 12',
+        value: 'grade12'
+    },
+    {
+        id: '2',
+        name: 'Diploma',
+        value: 'diploma'
+    },
+    {
+        id: '3',
+        name: "Bachelor's Degree",
+        value: 'bachelor'
+    },
+    {
+        id: '4',
+        name: "Master's Degree",
+        value: 'master'
+    },
+    {
+        id: '5',
+        name: 'PhD',
+        value: 'phd'
+    }
+]
+
+export const qualificationSet = {
+    'grade12': 'Grade 12',
+    'diploma': 'Diploma',
+    'bachelor': "Bachelor's Degree",
+    'master': "Master's Degree",
+    'phd': 'PhD',
+}
