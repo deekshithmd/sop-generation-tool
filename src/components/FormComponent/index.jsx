@@ -23,32 +23,13 @@ import {
 } from "../ComponentList";
 import Warning from "../../assets/warning.png";
 import { validateEmail, checkFormData, sendEmail } from "../../helpers";
+import { initialFormState } from "../../config";
 
 export const FormComponent = () => {
     const [showForm, setShowForm] = useState(true);
     const [isFormCompleted, setIsFormCompleted] = useState(false);
     const [isFormSubmittedOnce, setIsFormSubmittedOnce] = useState(false);
-    const [formData, setFormData] = useState({
-        email: { value: "", isFocussed: false },
-        name: { value: "", isFocussed: false },
-        age: { value: 0, isFocussed: false },
-        qualification: { value: "", isFocussed: false },
-        institute: { value: "", isFocussed: false },
-        field: { value: "", isFocussed: false },
-        experience: { value: "", isFocussed: false },
-        institutecanada: { value: "", isFocussed: false },
-        programcanada: { value: "", isFocussed: false },
-        countryorigin: { value: "", isFocussed: false },
-        goals: { value: "", isFocussed: false },
-        listening: { value: "", isFocussed: false },
-        reading: { value: "", isFocussed: false },
-        speaking: { value: "", isFocussed: false },
-        writing: { value: "", isFocussed: false },
-        firsttution: { value: "no", isFocussed: false },
-        tutionfees: { value: "", isFocussed: false },
-        gic: { value: "no", isFocussed: false },
-        gicpay: { value: "", isFocussed: false },
-    });
+    const [formData, setFormData] = useState(initialFormState);
     const formRef = useRef(null);
 
     const handleSubmit = async (e) => {
@@ -64,7 +45,7 @@ export const FormComponent = () => {
                     left: 0,
                     behavior: "smooth",
                 });
-                formRef?.current?.reset();
+                setFormData(initialFormState);
             }
         } else {
             setIsFormSubmittedOnce(true);
@@ -110,21 +91,40 @@ export const FormComponent = () => {
                 <Span fontSize="32px" fontWeight="500">
                     Customized SOP Generator
                 </Span>
-                <Span padding="14px 25px">
-                    Fill this questionnaire for the student. After submitting, you will
-                    receive an email at the email address that you have provided with a
-                    Statement of Purpose customized for you. You can use and modify that
-                    as per your needs.
-                </Span>
-                <HorizontalLine />
-                {isFormSubmittedOnce && !isFormCompleted && (
-                    <WarningContainer padding="0px 25px 14px">
-                        <img src={Warning} height="21px" width="20px" alt="warning" />
-                        <WarningText>Fill all compulsory fields</WarningText>
-                    </WarningContainer>
+                {showForm ? (
+                    <>
+                        <Span padding="14px 25px">
+                            Fill this questionnaire for the student. After submitting, you will
+                            receive an email at the email address that you have provided with a
+                            Statement of Purpose customized for you. You can use and modify that
+                            as per your needs.
+                        </Span>
+                        <HorizontalLine />
+                        {isFormSubmittedOnce && !isFormCompleted && (
+                            <WarningContainer padding="0px 25px 14px">
+                                <img src={Warning} height="21px" width="20px" alt="warning" />
+                                <WarningText>Fill all compulsory fields</WarningText>
+                            </WarningContainer>
+                        )}
+                    </>
+                ) : (
+                    <>
+                        <Span padding="14px 25px">
+                            Thanks for using our customized SOP Generator. You will receive a
+                            customized SOP on the email you provided in this form. Feel free to
+                            use and edit it as you see fit.
+                        </Span>
+                        <Span padding="14px 25px">
+                            Good luck with your application!
+                        </Span>
+                        <Span padding="14px 25px">
+                            <a href="/" onClick={() => setShowForm(true)}>Submit another response</a>
+                        </Span>
+                    </>
                 )}
+
             </InfoContainer>
-            {showForm ? (
+            {showForm && (
                 <Form onSubmit={handleSubmit}>
                     <InputContainer border={checkIsFieldValid("email") ? "red" : ""}>
                         <Label>
@@ -134,6 +134,7 @@ export const FormComponent = () => {
                             <Input
                                 type="email"
                                 name="email"
+                                value={formData["email"].value}
                                 placeholder="Your email address"
                                 width="300px"
                                 className="border"
@@ -165,6 +166,7 @@ export const FormComponent = () => {
                                 name="name"
                                 placeholder="Your full name"
                                 width="300px"
+                                value={formData["name"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("name") ? "red" : "black"}
                                 onFocus={() =>
@@ -199,6 +201,7 @@ export const FormComponent = () => {
                                 name="age"
                                 placeholder="Your age"
                                 width="150px"
+                                value={formData["age"].value}
                                 onChange={handleDataChange}
                                 borderBottom={
                                     formData["age"].isFocussed && formData["age"].value === 0
@@ -250,6 +253,7 @@ export const FormComponent = () => {
                                 name="institute"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["institute"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("institute") ? "red" : "black"}
                                 onFocus={() =>
@@ -283,6 +287,7 @@ export const FormComponent = () => {
                                 name="field"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["field"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("field") ? "red" : "black"}
                                 onFocus={() =>
@@ -325,6 +330,7 @@ export const FormComponent = () => {
                                 name="experience"
                                 placeholder="Your answer"
                                 width="100%"
+                                value={formData["experience"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("experience") ? "red" : "black"}
                                 onFocus={() =>
@@ -361,6 +367,7 @@ export const FormComponent = () => {
                                 name="institutecanada"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["institutecanada"].value}
                                 onChange={handleDataChange}
                                 borderBottom={
                                     checkIsFieldValid("institutecanada") ? "red" : "black"
@@ -401,6 +408,7 @@ export const FormComponent = () => {
                                 name="programcanada"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["programcanada"].value}
                                 onChange={handleDataChange}
                                 borderBottom={
                                     checkIsFieldValid("programcanada") ? "red" : "black"
@@ -441,6 +449,7 @@ export const FormComponent = () => {
                                 name="countryorigin"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["countryorigin"].value}
                                 onChange={handleDataChange}
                                 borderBottom={
                                     checkIsFieldValid("countryorigin") ? "red" : "black"
@@ -479,6 +488,7 @@ export const FormComponent = () => {
                                 name="goals"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["goals"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("goals") ? "red" : "black"}
                                 onFocus={() =>
@@ -507,6 +517,7 @@ export const FormComponent = () => {
                                 name="listening"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["listening"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("listening") ? "red" : "black"}
                                 onFocus={() =>
@@ -540,6 +551,7 @@ export const FormComponent = () => {
                                 name="reading"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["reading"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("reading") ? "red" : "black"}
                                 onFocus={() =>
@@ -570,6 +582,7 @@ export const FormComponent = () => {
                                 name="speaking"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["speaking"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("speaking") ? "red" : "black"}
                                 onFocus={() =>
@@ -603,6 +616,7 @@ export const FormComponent = () => {
                                 name="writing"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["writing"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("writing") ? "red" : "black"}
                                 onFocus={() =>
@@ -660,6 +674,7 @@ export const FormComponent = () => {
                                 name="tutionfees"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["tutionfees"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("tutionfees") ? "red" : "black"}
                                 onFocus={() =>
@@ -714,6 +729,7 @@ export const FormComponent = () => {
                                 name="gicpay"
                                 placeholder="Your answer"
                                 width="300px"
+                                value={formData["gicpay"].value}
                                 onChange={handleDataChange}
                                 borderBottom={checkIsFieldValid("gicpay") ? "red" : "black"}
                                 onFocus={() =>
@@ -748,11 +764,6 @@ export const FormComponent = () => {
                         </Button>
                     </BottomRow>
                 </Form>
-            ) : (
-                <InputContainer>
-                    Would you like to submit another response?{" "}
-                    <button onClick={() => setShowForm(true)}>click here</button>
-                </InputContainer>
             )}
         </Container>
     );
