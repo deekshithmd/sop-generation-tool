@@ -1,3 +1,5 @@
+// All data and state values
+
 export const initialFormState = {
     email: { value: "", isFocussed: false },
     name: { value: "", isFocussed: false },

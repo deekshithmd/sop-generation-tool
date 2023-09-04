@@ -1,5 +1,12 @@
+// package imports
 import React, { useState, useRef } from "react";
 import { useClickAway } from "react-use";
+
+// image imports
+import Warning from "../../assets/warning.png";
+import Down from "../../assets/down.png";
+
+// component imports
 import {
   Container,
   HeaderContainer,
@@ -23,11 +30,19 @@ import {
   Span,
   HorizontalLine,
 } from "../ComponentList";
-import Warning from "../../assets/warning.png";
-import Down from "../../assets/down.png";
-import { validateEmail, checkFormData, sendEmail } from "../../helpers";
-import { initialFormState, qualificationList,qualificationSet } from "../../config";
 
+// helper functions
+import { validateEmail, checkFormData, sendEmail } from "../../helpers";
+
+// constants and data
+import {
+  initialFormState,
+  qualificationList,
+  qualificationSet,
+} from "../../config";
+
+
+// Form Component
 export const FormComponent = () => {
   const [showForm, setShowForm] = useState(true);
   const [isFormCompleted, setIsFormCompleted] = useState(false);
@@ -37,13 +52,17 @@ export const FormComponent = () => {
   const formRef = useRef(null);
   const dropdownRef = useRef(null);
 
+  // to close dropdown on clicking outside
   useClickAway(dropdownRef, () => setShowDropdown(false));
 
+  // submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (checkFormData(formData)) {
+      // sending email with form data
       const result = await sendEmail(formData);
+      // iff successful scroll to top and show thank you page
       if (result) {
         setIsFormCompleted(true);
         setShowForm(false);
@@ -55,6 +74,7 @@ export const FormComponent = () => {
         setFormData(initialFormState);
       }
     } else {
+      // when form not filled completely scroll to top and show error
       setIsFormSubmittedOnce(true);
       setIsFormCompleted(false);
       window.scrollTo({
@@ -65,6 +85,7 @@ export const FormComponent = () => {
     }
   };
 
+  // function to handle field change
   const handleDataChange = (event) => {
     event.preventDefault();
 
@@ -91,6 +112,7 @@ export const FormComponent = () => {
 
   return (
     <Container>
+      {/* Header */}
       <HeaderContainer ref={formRef}>
         <Header>Effizient</Header>
       </HeaderContainer>
@@ -130,6 +152,7 @@ export const FormComponent = () => {
           </>
         )}
       </InfoContainer>
+      {/* Form Items */}
       {showForm && (
         <Form onSubmit={handleSubmit}>
           <InputContainer border={checkIsFieldValid("email") ? "red" : ""}>
@@ -143,7 +166,6 @@ export const FormComponent = () => {
                 value={formData["email"].value}
                 placeholder="Your email address"
                 width="300px"
-                className="border"
                 onChange={handleDataChange}
                 borderBottom={checkIsFieldValid("email") ? "red" : "#dadce0"}
                 onFocus={() =>
@@ -231,7 +253,9 @@ export const FormComponent = () => {
               {checkIsFieldValid("age") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question with number value</WarningText>
+                  <WarningText>
+                    This is a required question with number value
+                  </WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -244,7 +268,7 @@ export const FormComponent = () => {
               {formData?.qualification?.value
                 ? qualificationSet[formData?.qualification?.value]
                 : "Choose"}
-                 <img src={Down} height="15px" width="15px" alt="warning" />
+              <img src={Down} height="15px" width="15px" alt="warning" />
               {showDropdown && (
                 <OptionContainer ref={dropdownRef}>
                   {qualificationList?.map((item) => {
@@ -571,7 +595,9 @@ export const FormComponent = () => {
               {checkIsFieldValid("listening") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question with number value</WarningText>
+                  <WarningText>
+                    This is a required question with number value
+                  </WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -602,7 +628,9 @@ export const FormComponent = () => {
               {checkIsFieldValid("reading") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question with number value</WarningText>
+                  <WarningText>
+                    This is a required question with number value
+                  </WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -636,7 +664,9 @@ export const FormComponent = () => {
               {checkIsFieldValid("speaking") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question with number value</WarningText>
+                  <WarningText>
+                    This is a required question with number value
+                  </WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -667,7 +697,9 @@ export const FormComponent = () => {
               {checkIsFieldValid("writing") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question with number value</WarningText>
+                  <WarningText>
+                    This is a required question with number value
+                  </WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -785,6 +817,7 @@ export const FormComponent = () => {
               )}
             </InputWrapper>
           </InputContainer>
+          {/* Action Buttons */}
           <BottomRow
             background="transparent"
             border="transparent"
@@ -792,7 +825,7 @@ export const FormComponent = () => {
           >
             <Button type="submit">Submit</Button>
             <Button
-              onClick={()=>setFormData(initialFormState)}
+              onClick={() => setFormData(initialFormState)}
               background="transparent"
               color="#176ee8"
               hover="#cef0f5"

@@ -1,5 +1,7 @@
+// package import
 import styled from "styled-components";
 
+// Reusable Styled Components
 export const Container = styled.div`
   width: 50vw;
   min-height: 70vh;
