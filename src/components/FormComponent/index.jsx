@@ -32,7 +32,7 @@ import {
 } from "../ComponentList";
 
 // helper functions
-import { validateEmail, checkFormData, sendEmail } from "../../helpers";
+import { checkFormData, sendEmail } from "../../helpers";
 
 // constants and data
 import {
