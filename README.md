@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Statement of purpose generation tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a tool which takes input from user in the form and generates email response with all the inputs along with that it will send the pdf attachment which contains a statement of purpose generated using provided details.
 
-## Available Scripts
+## Project links
+[SOP Tool Frontend](https://github.com/deekshithmd/sop-generation-tool)<br/>
+[SOP Tool Backend](https://github.com/deekshithmd/sop-tool-backend)
 
-In the project directory, you can run:
+## Steps to run the application in local environment
+### Using complete local environment
+  1. Clone the frontend repo ```git clone https://github.com/deekshithmd/sop-generation-tool.git```
+  2. Clone the backend repo ```git clone https://github.com/deekshithmd/sop-tool-backend.git```
+  3. Run ```npm install``` on both repos
+  4. Run ```npm run dev``` on backend repo it will run the server at port 5000
+  5. Replace API_ENDPOINT in helpers folder of frontend repo with ```http://localhost:5000/``` and then run ```npm start``` it will run the application in port 3000
+  6. User can provide all the data and click submit, now email will be sent to user along with the pdf attachment
+  7. If user not filled all fileds form will scroll to top and shows error to fill the data
+  8. If user clicks on clear form all formData will be cleared.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Using deployed backend and local frontend
+  1. Clone the frontend repo ```git clone https://github.com/deekshithmd/sop-generation-tool.git```
+  2. run ```npm install```
+  3. run ```npm start``` it will run the application in port 3000
+  4. Here frontend will use deployed backend to provide backend functionalities
+  6. User can provide all the data and click submit, now email will be sent to user along with the pdf attachment
+  7. If user not filled all fileds form will scroll to top and shows error to fill the data
+  8. If user clicks on clear form all formData will be cleared.
