@@ -88,22 +88,10 @@ export const FormComponent = () => {
   // function to handle field change
   const handleDataChange = (event) => {
     event.preventDefault();
-
-    if (event.target.name === "email") {
-      if (validateEmail(event.target.value)) {
-        setFormData({
-          ...formData,
-          [event.target.name]: { value: event.target.value, isFocussed: true },
-        });
-      }
-    }
-
-    if (event.target.name !== "email") {
-      setFormData({
-        ...formData,
-        [event.target.name]: { value: event.target.value, isFocussed: true },
-      });
-    }
+    setFormData({
+      ...formData,
+      [event.target.name]: { value: event.target.value, isFocussed: true },
+    });
   };
 
   const checkIsFieldValid = (field) => {
