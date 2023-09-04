@@ -89,6 +89,14 @@ export const Input = styled.input`
   padding: 10px 0px 5px;
   width: ${(props) => props.width || "100%"};
   border-bottom: 1px solid ${(props) => props.borderBottom};
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   &:focus {
     border-bottom: 1px solid transparent;
   }
@@ -101,7 +109,7 @@ export const Input = styled.input`
 `;
 
 export const InputWrapper = styled.div`
-  width: ${props => props.width || 'fit-content'};
+  width: ${(props) => props.width || "fit-content"};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,36 +182,36 @@ export const Dropdown = styled.div`
   padding: 10px 15px;
   border: 1px solid #dadce0;
   border-radius: 5px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: transparent;
   width: 180px;
   outline: none;
-  position:relative;
-  cursor:pointer;
+  position: relative;
+  cursor: pointer;
 `;
 
-export const OptionContainer=styled.div`
-  width:150px;
-  height:auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  position:absolute;
-  top:42px;
-  left:0px;
-  background:#fff;
+export const OptionContainer = styled.div`
+  width: inherit;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 42px;
+  left: 0px;
+  background: #fff;
   box-shadow: 2px 2px 6px #afb1b3;
-  border-radius:5px;
-`
+  border-radius: 5px;
+`;
 
 export const Option = styled.option`
   padding: 10px;
-  width:100%;
-  &:hover{
-    cursor:pointer;
-    background:#edeff0;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+    background: #edeff0;
   }
 `;

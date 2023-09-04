@@ -1,7 +1,7 @@
 export const initialFormState = {
     email: { value: "", isFocussed: false },
     name: { value: "", isFocussed: false },
-    age: { value: 0, isFocussed: false },
+    age: { value: "", isFocussed: false },
     qualification: { value: "", isFocussed: false },
     institute: { value: "", isFocussed: false },
     field: { value: "", isFocussed: false },

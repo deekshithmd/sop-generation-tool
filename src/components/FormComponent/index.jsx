@@ -205,8 +205,8 @@ export const FormComponent = () => {
               <Input
                 type="number"
                 name="age"
-                placeholder="Your age"
-                width="150px"
+                placeholder="Your answer"
+                width="300px"
                 value={formData["age"].value}
                 onChange={handleDataChange}
                 borderBottom={
@@ -231,7 +231,7 @@ export const FormComponent = () => {
               {checkIsFieldValid("age") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question</WarningText>
+                  <WarningText>This is a required question with number value</WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -546,7 +546,7 @@ export const FormComponent = () => {
             </Label>
             <InputWrapper>
               <Input
-                type="text"
+                type="number"
                 name="listening"
                 placeholder="Your answer"
                 width="300px"
@@ -571,7 +571,7 @@ export const FormComponent = () => {
               {checkIsFieldValid("listening") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question</WarningText>
+                  <WarningText>This is a required question with number value</WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -582,7 +582,7 @@ export const FormComponent = () => {
             </Label>
             <InputWrapper>
               <Input
-                type="text"
+                type="number"
                 name="reading"
                 placeholder="Your answer"
                 width="300px"
@@ -602,7 +602,7 @@ export const FormComponent = () => {
               {checkIsFieldValid("reading") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question</WarningText>
+                  <WarningText>This is a required question with number value</WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -613,7 +613,7 @@ export const FormComponent = () => {
             </Label>
             <InputWrapper>
               <Input
-                type="text"
+                type="number"
                 name="speaking"
                 placeholder="Your answer"
                 width="300px"
@@ -636,7 +636,7 @@ export const FormComponent = () => {
               {checkIsFieldValid("speaking") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question</WarningText>
+                  <WarningText>This is a required question with number value</WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
@@ -647,7 +647,7 @@ export const FormComponent = () => {
             </Label>
             <InputWrapper>
               <Input
-                type="text"
+                type="number"
                 name="writing"
                 placeholder="Your answer"
                 width="300px"
@@ -667,7 +667,7 @@ export const FormComponent = () => {
               {checkIsFieldValid("writing") && (
                 <WarningContainer>
                   <img src={Warning} height="21px" width="20px" alt="warning" />
-                  <WarningText>This is a required question</WarningText>
+                  <WarningText>This is a required question with number value</WarningText>
                 </WarningContainer>
               )}
             </InputWrapper>
